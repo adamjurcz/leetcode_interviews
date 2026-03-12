@@ -14,11 +14,11 @@ public class L105 {
         }
 
         // current root
-        TreeNode treeNode = new TreeNode(preorder[preStart]);
+        TreeNode root = new TreeNode(preorder[preStart]);
 
         int inorderTargetIndex = 0;
         for (int i = inStart; i <= inEnd; i++) {
-            if (treeNode.val == inorder[i]) {
+            if (root.val == inorder[i]) {
                 inorderTargetIndex = i;
             }
         }
@@ -31,19 +31,15 @@ public class L105 {
         TreeNode right = buildTree(preorder, preStart + leftSubTreeSize + 1, preEnd,
                 inorder, inorderTargetIndex + 1, inEnd);
 
-        treeNode.left = left;
-        treeNode.right = right;
+        root.left = left;
+        root.right = right;
 
-        return treeNode;
+        return root;
     }
 
 
     static void main() {
-        TreeNode testCase = new TreeNode(5, new TreeNode(10), new TreeNode(15));
-
         System.out.println(buildTree(new int[]{3, 9, 20, 15, 7}, new int[]{9, 3, 15, 20, 7}));
-        // preStart = 0, preEnd = 4, inStart = 0, inEnd = 4
-        // preStart = 1, preEnd = 4
     }
 }
 
